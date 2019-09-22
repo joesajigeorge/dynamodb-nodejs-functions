@@ -1,0 +1,24 @@
+{
+  "name": "dynamodb-nodejs-functions",
+  "version": "1.0.0",
+  "description": "DynamoDB NodeJS Examples \r This is a serverless project created for learning AWS Dynamodb.",
+  "main": "handler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joesajigeorge/dynamodb-nodejs-functions.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joesajigeorge/dynamodb-nodejs-functions/issues"
+  },
+  "homepage": "https://github.com/joesajigeorge/dynamodb-nodejs-functions#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "serverless-http": "^2.3.0"
+  }
+}
