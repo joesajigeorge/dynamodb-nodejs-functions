@@ -5,6 +5,18 @@ provider:
   stage: dev
   region: us-east-1
   versionFunctions: false
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - dynamodb:DescribeTable
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+      Resource:
+        - "Fn::GetAtt": [ dynamodbExampleTable, Arn ]
 functions:
   hello:
     handler: handler.handler
@@ -12,3 +24,20 @@ functions:
       - http:
           path: /api
           method: get
+      - http:
+          path: /api/createuser
+          method: post
+
+resources:
+  Resources:
+    dynamodbExampleTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: dynamodb-example-node
+        AttributeDefinitions:
+          - AttributeName: user_id
+            AttributeType: N
+        KeySchema:
+          - AttributeName: user_id
+            KeyType: HASH
+        BillingMode: PAY_PER_REQUEST
