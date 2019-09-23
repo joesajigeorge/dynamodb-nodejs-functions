@@ -27,6 +27,9 @@ functions:
       - http:
           path: /api/createuser
           method: post
+      - http:
+          path: /api/getuser
+          method: get
 
 resources:
   Resources:
