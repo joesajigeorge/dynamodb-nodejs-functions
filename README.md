@@ -2,6 +2,7 @@
 DynamoDB NodeJS Examples 
 This is a serverless project created for learning AWS Dynamodb.
 
--   put
--   query
--   update
+-   put operation
+-   query operation
+-   update operation
+-   scan operation
