@@ -18,7 +18,7 @@ provider:
       Resource:
         - "Fn::GetAtt": [ dynamodbExampleTable, Arn ]
 functions:
-  hello:
+  dynamodbexamplenode:
     handler: handler.handler
     events:
       - http:
@@ -30,6 +30,9 @@ functions:
       - http:
           path: /api/getuser
           method: get
+      - http:
+          path: /api/updateuser
+          method: post
 
 resources:
   Resources:

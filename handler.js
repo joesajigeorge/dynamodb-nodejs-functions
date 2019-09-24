@@ -66,4 +66,32 @@ app.get('/api/getuser', function (req, res){
   });
 });
 
+//update item
+app.post('/api/updateuser', function (req, res){
+  var body = req.body;
+  var params = {
+      TableName: "dynamodb-example-node",
+      Key: {
+        "user_id": body.user_id
+      },
+      UpdateExpression: "SET #expattrname = :expattrvalue",
+      ExpressionAttributeNames: {
+         "#expattrname": "username"
+      },
+      ExpressionAttributeValues: {
+        ":expattrvalue": body.username    
+        },
+      ReturnValues: "UPDATED_NEW"
+  };
+  docClient.update(params, function (err, data) {
+       if (err) {
+           console.log(err);
+       }
+       else {
+           console.log(data);
+           res.status(200).json({ "status": 1, "message": "User updated"});
+  }
+  });
+});
+
 module.exports.handler = serverless(app);
