@@ -94,4 +94,21 @@ app.post('/api/updateuser', function (req, res){
   });
 });
 
+//scan item
+app.get('/api/getallusers', function (req, res){
+  var body = req.body;
+  var params = {
+    TableName: "dynamodb-example-node",
+    ProjectionExpression: "user_id, username, user_age",
+  };
+  docClient.scan(params, function (err, data) {
+    if (err) {
+      console.log(err);
+  }
+  else {
+    res.status(200).json({ "status": 1, "message": "user exists", "data": data.Items });
+  }
+  });
+});
+
 module.exports.handler = serverless(app);

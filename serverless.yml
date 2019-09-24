@@ -33,6 +33,9 @@ functions:
       - http:
           path: /api/updateuser
           method: post
+      - http:
+          path: /api/getallusers
+          method: get
 
 resources:
   Resources:
